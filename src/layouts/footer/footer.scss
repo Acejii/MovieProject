@@ -1,0 +1,40 @@
+@use '../../scss/index.scss' as *;
+
+.footer {
+    &__wrap {
+        @include flex(unset, space-between);
+        flex-wrap: wrap; 
+        padding: 2rem;   
+    }
+
+    
+
+    &__item {
+        width: calc(100%/4);
+        padding-bottom: 1.5rem;
+
+        @include tablet {
+            width: calc(100%/2);
+        }
+
+        @include mobile {
+            width: 100%;
+            text-align: center;
+        }
+
+        &-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $main-color;
+            margin-bottom: 1rem;
+        }
+
+    &-list {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    }
+
+    
+}

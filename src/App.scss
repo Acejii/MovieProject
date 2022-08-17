@@ -27,6 +27,7 @@ body {
 
     background-color: $body-bg;
     color: $txt-color;
+    padding-top: calc($header-height + 1rem);
 
     @include mobile {
         margin-bottom: 3rem;
