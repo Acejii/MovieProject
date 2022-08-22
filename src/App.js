@@ -1,16 +1,20 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import { BrowserRouter } from "react-router-dom";
-import Router from "./config/Router";
-import Header from "./layouts/header/Header";
-import Footer from "./layouts/footer/Footer";
+import { publicRoutes } from "./routes/routes";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Header />
-      <Router />
-      <Footer />
-    </BrowserRouter>
+      <Routes>
+        {publicRoutes.map((route, id) => (
+          <Route key={id} path={route.path} element={route.component} />
+        ))}
+      </Routes>
+      {/* <Footer /> */}
+    </>
   );
 }
 
