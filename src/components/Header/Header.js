@@ -29,17 +29,24 @@ const Header = () => {
   return (
     <div ref={headerRef} className="header">
       <div className="header__wrap container">
-        <div className="logo">
-          <Link to="/">
-            <img src={logo} alt="" />
-          </Link>
+        <div className="left">
+          <div className="logo">
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
+          </div>
+          <div className="header__nav">
+            {publicRoutes.map((item, index) => (
+              <NavLink to={item.path} key={index} className="header__nav-item">
+                {item.title?.toUpperCase()}
+              </NavLink>
+            ))}
+          </div>
         </div>
-        <div className="header__nav">
-          {publicRoutes.map((item, index) => (
-            <NavLink to={item.path} key={index} className="header__nav-item">
-              {item.title}
-            </NavLink>
-          ))}
+
+        <div className="right">
+          <Link to="/">Đăng nhập</Link>
+          <Link to="/">Đăng ký</Link>
         </div>
       </div>
     </div>

@@ -3,21 +3,15 @@ import { useEffect } from "react";
 import Banner from "../components/Banner/Banner";
 import Cinema from "../components/Cinema/Cinema";
 import MovieShowing from "../components/MovieShowing/MovieShowing";
-import { useDispatch } from "react-redux";
-import { getBanners } from "../slices/bannerSlice";
+import MovieFiter from "../components/MovieFilter/MovieFilter";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getBanners());
-  }, []);
-
   return (
     <div>
       <Banner />
-      <Cinema />
+      <MovieFiter />
       <MovieShowing />
+      {/* <Cinema /> */}
     </div>
   );
 };

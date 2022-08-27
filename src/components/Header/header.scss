@@ -1,18 +1,18 @@
 @use '../../scss/_index.scss' as *;
 
 .header {
+    margin-bottom: $header-height;
     width: 100%;
     height: $header-height;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 99;
-    background-color: $body-bg;
+    background: linear-gradient(to top, #333, $body-bg);
     transition: height 0.5s ease, background-color 0.3s ease;
 
     &.shrink {
         height: $header-shrink-height;
-        background-color: $body-bg;
     }
 
     &__wrap {
@@ -23,6 +23,15 @@
         @include mobile {
             justify-content: center;
         }
+    }
+
+    .left {
+        width: 50%;
+        @include flex(center, space-between)
+    }
+
+    .right > * ~ * {
+        margin-left: 18px;
     }
 
     .logo {
@@ -47,6 +56,7 @@
         }
 
         &-item {
+            font-size: 14px;
             position: relative;
             font-weight: 700;
             display: inline-block;

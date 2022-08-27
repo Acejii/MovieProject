@@ -2,7 +2,7 @@ import React from "react";
 import "./cinema.scss";
 
 const Cinema = () => {
-  return <div>Cinema</div>;
+  return <div>cinma</div>;
 };
 
 export default Cinema;
