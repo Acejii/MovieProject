@@ -1,8 +1,8 @@
 @use "../../../../scss/" as *;
 
 .form-wrapper {
-    margin-top: 28px;
-    margin-bottom: 32px;
+  margin-top: 28px;
+  margin-bottom: 32px;
   background-color: $body-bg;
   padding: 0 2rem;
 }
@@ -11,7 +11,7 @@
   .form-group {
     width: 100%;
     @include flex(center, space-between);
-    padding: 6px 10px;
+    padding: 10px 20px;
     background-color: rgba($color: $white, $alpha: 0.9);
     border-radius: 10px;
 
@@ -20,7 +20,7 @@
     }
 
     .form-coltrol {
-        color: $txt-color;
+      color: $txt-color;
       width: 100%;
       font-size: 16px;
       padding: 8px;
@@ -31,14 +31,16 @@
     }
 
     .name-form {
-      width: 40%;
+      width: 30%;
     }
 
-    .theater-form,
+    .theater-form {
+      width: 30%;
+    }
+
     .day-form,
-    .hour-form,
     .button-controll {
-      width: 15%;
+      width: 20%;
     }
 
     .button-controll {

@@ -1,83 +1,113 @@
-@use '../../scss/_index.scss' as *;
+@use "scss" as *;
 
 .header {
-    margin-bottom: $header-height;
-    width: 100%;
-    height: $header-height;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    background: linear-gradient(to top, #333, $body-bg);
-    transition: height 0.5s ease, background-color 0.3s ease;
+  margin-bottom: $header-height;
+  width: 100%;
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: linear-gradient(to top, #333, $body-bg);
+  transition: height 0.5s ease, background-color 0.3s ease;
 
-    &.shrink {
-        height: $header-shrink-height;
+  &.shrink {
+    height: $header-shrink-height;
+  }
+
+  &__wrap {
+    height: 100%;
+    @include flex(center, space-between);
+    padding: 0 2rem;
+
+    @include mobile {
+      justify-content: center;
+    }
+  }
+
+  .left {
+    width: 50%;
+    @include flex(center, space-between);
+  }
+
+  .right > * ~ * {
+    margin-left: 18px;
+  }
+
+  .logo {
+    @include flex(center, center);
+    $logo-size: 70px;
+    width: $logo-size;
+    height: $logo-size;
+
+    a {
+      display: inline-flex;
     }
 
-    &__wrap {
-        height: 100%;
-        @include flex(center, space-between);
-        padding: 0 2rem;       
+    img {
+      object-fit: cover;
+    }
+  }
 
-        @include mobile {
-            justify-content: center;
-        }
+  &__nav {
+    & * ~ * {
+      margin-left: 20px;
     }
 
-    .left {
-        width: 50%;
-        @include flex(center, space-between)
+    &-item {
+      font-size: 14px;
+      position: relative;
+      font-weight: 700;
+      display: inline-block;
+      line-height: 2;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: #fff;
+        bottom: 0;
+        left: 0;
+        transition: width 0.5s ease;
+      }
+
+      &.active::after,
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .right {
+    .avatar {
+      background-color: $main-color;
+      margin-right: 5px;
     }
 
-    .right > * ~ * {
-        margin-left: 18px;
+    .user__avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
+  }
+}
 
-    .logo {
-        @include flex(center,center);
-        $logo-size: 70px;
-        width: $logo-size;
-        height: $logo-size;
-        
-        a {
-            display: inline-flex;
-        }
+.user {
+  padding: 10px 20px;
+  background: linear-gradient(to top, $body-bg, #333, #333);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 
-        img {
-            object-fit: cover;
-        }
-    }
-
-    &__nav {
-
-        & * ~ * {
-            margin-left: 20px;
-        }
-
-        &-item {
-            font-size: 14px;
-            position: relative;
-            font-weight: 700;
-            display: inline-block;
-            line-height: 2;
-        
-            &::after {
-                content: '';
-                position: absolute;
-                width: 0;
-                height: 2px;
-                background-color: #fff;
-                bottom: 0;
-                left: 0;
-                transition: width 0.5s ease;
-            }
-        
-            &.active::after,
-            &:hover::after {
-                width: 100%;
-            }
-           
-        }
-    }
+  & > * ~ * {
+    margin-top: 5px;
+  }
+  &__item {
+    color: $txt-color;
+    font-size: 15px;
+    font-weight: 500;
+  }
 }

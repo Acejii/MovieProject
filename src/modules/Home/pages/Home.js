@@ -11,7 +11,7 @@ const Home = () => {
       <Banner />
       <MovieFiter />
       <MovieShowing />
-      {/* <Cinema /> */}
+      <Cinema />
     </div>
   );
 };

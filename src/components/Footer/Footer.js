@@ -1,37 +1,61 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.scss";
+import appstore from "assets/img/appstore-logo.png";
+import googleplay from "assets/img/googleplay-logo.png";
+
+const SocialMedia = () => {
+  return (
+    <div className="social__wrapper">
+      <i className="bx bxl-facebook-square icon"></i>
+      <i className="bx bxl-youtube icon"></i>
+      <i className="bx bxl-instagram icon"></i>
+      <i className="bx bxl-tiktok icon"></i>
+    </div>
+  );
+};
+
+const AppDownload = () => {
+  return (
+    <div className="app__wrapper">
+      <h1 className="footer__item-title">Tải app</h1>
+      <img src={appstore} alt="anh" className="footer__app" />
+      <img src={googleplay} alt="anh" className="footer__app" />
+    </div>
+  );
+};
 
 const footerInfo = [
   {
-    title: "general",
+    title: "Về CyberCinema",
     content: [
-      { item: "VIP", path: "/" },
-      { item: "IMAX", path: "/" },
-      { item: "4DX", path: "/" },
+      { item: "Giới thiệu", path: "/" },
+      { item: "Tuyển dụng", path: "/" },
+      { item: "Liên hệ quảng cáo", path: "/" },
     ],
   },
   {
-    title: "who are we?",
+    title: "Điều khoản",
     content: [
-      { item: "About us", path: "/" },
-      { item: "FAQ", path: "/" },
-      { item: "Careers", path: "/" },
+      { item: "Điều khoản chung", path: "/" },
+      { item: "Điều khoản thanh toán", path: "/" },
+      { item: "Chính sách bảo mật", path: "/" },
+      { item: "Câu hỏi thường gặp", path: "/" },
     ],
   },
   {
-    title: "legal",
+    title: "Hỗ trợ",
     content: [
-      { item: "Privacy policies", path: "/" },
-      { item: "Terms and conditions", path: "/" },
+      { item: "Góp ý", path: "/" },
+      { item: "Rạp & Giá vé", path: "/" },
+      { item: "Khuyến mãi", path: "/" },
     ],
   },
   {
-    title: "contact us",
+    title: "Kết nối CyberCinema",
     content: [
-      { item: "Feedback", path: "/" },
-      { item: "Sales & bulk booking enquiries", path: "/" },
-      { item: "Recover Email Confirmation", path: "/" },
+      { item: <SocialMedia />, path: "/" },
+      { item: <AppDownload />, path: "/" },
     ],
   },
 ];
@@ -52,6 +76,12 @@ const Footer = () => {
             ))}
           </div>
         ))}
+        <div className="coppyright">
+          <hr width="50%" className="coppyright__line" />
+          <div className="coppyright__text">
+            Copyrights © 2022 by Cyber Cinema.
+          </div>
+        </div>
       </div>
     </div>
   );

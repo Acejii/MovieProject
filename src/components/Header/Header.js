@@ -1,11 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { publicRoutes } from "../../routes/routes";
+import { useSelector } from "react-redux";
+import { Avatar, Dropdown } from "antd";
 import "./header.scss";
 import logo from "../../assets/img/logo.png";
+import UserMenu from "./UserMenu";
 
 const Header = () => {
   const headerRef = useRef(null);
+  const { user } = useSelector((state) => state.auth);
+  const userRender = user?.taiKhoan.slice(0, 1);
 
   useEffect(() => {
     const handleShrink = () => {
@@ -45,8 +50,21 @@ const Header = () => {
         </div>
 
         <div className="right">
-          <Link to="/">Đăng nhập</Link>
-          <Link to="/">Đăng ký</Link>
+          {user ? (
+            <Dropdown placement="bottomRight" overlay={<UserMenu />}>
+              <div className="user__avatar">
+                <Avatar className="avatar" size="medium">
+                  {userRender.toUpperCase()}
+                </Avatar>
+                <p>{user?.taiKhoan}</p>
+              </div>
+            </Dropdown>
+          ) : (
+            <>
+              <Link to="/account/login">Đăng nhập</Link>
+              <Link to="/account/signup">Đăng ký</Link>
+            </>
+          )}
         </div>
       </div>
     </div>

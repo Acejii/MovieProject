@@ -1,0 +1,156 @@
+@use "scss" as *;
+
+.cinemas__wrapper {
+  padding: 50px 100px;
+  display: flex;
+  flex-direction: column;
+
+  .heading {
+    color: $txt-color;
+    text-align: center;
+  }
+  .cinema__border {
+    width: 100%;
+    height: 560px;
+    border: 1px solid rgba($color: #ccc, $alpha: 0.2);
+  }
+
+  // Ant design custom
+  .ant-tabs-tab {
+    margin: 0 !important;
+    padding: 10px 0 !important;
+    margin: 0 10px !important;
+    border-bottom: 1px solid rgba($color: #ccc, $alpha: 0.2);
+    color: $txt-color !important;
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $main-color;
+    border-color: $main-color !important;
+  }
+
+  .ant-tabs-ink-bar {
+    background: $main-color;
+  }
+  .ant-tabs-tab-btn {
+    width: 100%;
+    margin-right: 10px;
+  }
+
+  .cinemaSystem__tab {
+    $size: 60px;
+    width: $size;
+    height: $size;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .cinema__tabpane {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+// CinemaTheater.js
+.cinema__tab {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: left;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  p {
+    margin: 0px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .name {
+    font-size: 18px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .detail {
+    color: rgba(blue, $alpha: 0.8);
+    font-weight: 500;
+  }
+}
+
+// MovieList.js
+.movie__item__wrapper {
+  padding: 10px;
+  width: 100%;
+  height: 560px;
+  overflow-y: scroll;
+
+  .movie__item {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+
+    .movie__image {
+      width: 20%;
+      margin-right: 20px;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .movie__showtime {
+      width: 80%;
+      .movie__name {
+        color: $txt-color;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .theater {
+          margin-right: 20px;
+          padding: 3px;
+          background-color: $main-color;
+          border-radius: 5px;
+        }
+
+        .name {
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+
+      .show__time {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        .showtime__item {
+          width: 50%;
+          &__day {
+            margin-bottom: 10px;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid $main-color;
+            border-radius: 10px;
+            font-size: 16px;
+
+            .day {
+              font-weight: 600;
+            }
+            .divide {
+              margin: 0 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

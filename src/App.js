@@ -1,19 +1,22 @@
+import MainLayout from "components/MainLayout";
+import AccountLayout from "modules/Auth/components/AccountLayout";
+import Home from "modules/Home/pages/Home";
+import Movie from "modules/Movie/pages/Movie";
+import Ticket from "modules/Ticket/page/Ticket";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import { publicRoutes } from "./routes/routes";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <>
-      <Header />
       <Routes>
-        {publicRoutes.map((route, id) => (
-          <Route key={id} path={route.path} element={route.component} />
-        ))}
+        <Route path="/" exact element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="movie/:movieId" element={<Movie />} />
+          <Route path="ticket/:showtimeId" element={<Ticket />} />
+          <Route path="account/:status" element={<AccountLayout />} />
+        </Route>
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

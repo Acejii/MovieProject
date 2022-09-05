@@ -32,8 +32,6 @@ const Carousel = () => {
     <div className="carousel__wrapper">
       {isLoading ? (
         <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
       ) : (
         <Swiper
           speed={1000}

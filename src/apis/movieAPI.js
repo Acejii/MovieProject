@@ -1,10 +1,11 @@
+import axios from "axios";
 import axiosClient from "./axiosClient";
 
 const movieAPI = {
   getMovies: () => {
     return axiosClient.get("QuanLyPhim/LayDanhSachPhim", {
       params: {
-        maNhom: "GP04",
+        maNhom: "GP14",
       },
     });
   },
@@ -25,6 +26,35 @@ const movieAPI = {
     return axiosClient.get("QuanLyRap/LayThongTinLichChieuPhim", {
       params: {
         maPhim: movieId,
+      },
+    });
+  },
+
+  getCinemaSystem: () => {
+    return axiosClient.get("QuanLyRap/LayThongTinHeThongRap");
+  },
+
+  getCinemaFromSystem: (cinemaSystem) => {
+    return axiosClient.get("QuanLyRap/LayThongTinCumRapTheoHeThong", {
+      params: {
+        maHeThongRap: cinemaSystem,
+      },
+    });
+  },
+
+  getMovieShowTime: (movieId) => {
+    return axiosClient.get("QuanLyRap/LayThongTinLichChieuPhim", {
+      params: {
+        maPhim: movieId,
+      },
+    });
+  },
+
+  getShowTimeFromCinemaSystem: (cinemaSystem) => {
+    return axiosClient.get("QuanLyRap/LayThongTinLichChieuHeThongRap", {
+      params: {
+        maHeThongRap: cinemaSystem,
+        maNhom: "GP02",
       },
     });
   },

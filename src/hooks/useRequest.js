@@ -14,29 +14,46 @@ const reducer = (state, { type, payload }) => {
       return { ...state, isLoading: false, data: payload };
     case "REQUEST_REJECTED":
       return { ...state, isLoading: false, error: payload };
+    case "REQUEST_FINAL": {
+      return { ...state, isLoading: false };
+    }
     default:
       return state;
   }
 };
 
-const useRequest = (fn, deps = []) => {
-  // khác: (config, deps = [])
+const useRequest = (fn, config = {}) => {
+  const { isManual = false, deps = [] } = config;
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const request = async (...params) => {
+    try {
+      dispatch({ type: "REQUEST_PENDING" });
+      const data = await fn(...params);
+      return data;
+    } catch (error) {
+      throw error;
+    } finally {
+      // Dù thành công hay thất bại đều nhảy vào block finally
+      dispatch({ type: "REQUEST_FINAL" });
+    }
+  };
+
   useEffect(() => {
-    const request = async () => {
-      try {
-        dispatch({ type: "REQUEST_PENDING" });
-        const data = await fn();
-        // có thể viết như này await axiosClient(config)
-        dispatch({ type: "REQUEST_FULFILLED", payload: data });
-      } catch (error) {
-        dispatch({ type: "REQUEST_REJECTED", payload: error });
-      }
-    };
-    request();
+    if (!isManual) {
+      request()
+        .then((data) => {
+          dispatch({ type: "REQUEST_FULFILLED", payload: data });
+        })
+        .catch((error) => {
+          dispatch({ type: "REQUEST_REJECTED", payload: error });
+        });
+    }
   }, deps);
 
-  return state;
+  const result = isManual ? request : state.data;
+
+  return { ...state, data: result };
 };
 
 export default useRequest;

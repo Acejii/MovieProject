@@ -1,0 +1,110 @@
+@use "scss" as *;
+
+.showtime {
+  padding: 100px 80px;
+
+  &__title {
+    text-align: center;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: $txt-color;
+    }
+  }
+
+  .not__buy__show {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+
+    .content {
+      color: $main-color;
+    }
+  }
+
+  &__main {
+    &__cinema {
+      &__item {
+        $size: 50px;
+        width: $size;
+        height: $size;
+        @include flex(center, center);
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+// Cinema.js
+
+.cinema__wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 20px 0;
+
+  .cinema__branch {
+    width: 25%;
+
+    &__item {
+      width: 100%;
+      padding: 20px 30px;
+      @include flex(flex-start, center);
+      flex-direction: column;
+      background-color: #1c2936;
+      border-radius: 20px;
+
+      h3 {
+        font-weight: 700;
+        color: $txt-color;
+      }
+
+      p {
+        color: $txt-color;
+      }
+    }
+  }
+
+  .cinema__showtime {
+    width: 75%;
+    padding: 0 0px 0 40px;
+    @include flex(flex-start, flex-start);
+    flex-wrap: wrap;
+
+    &__container {
+      padding: 0px 15px 15px 15px;
+      width: 25%;
+
+      .cinema__showtime__item {
+        border: 1px solid $main-color;
+        // background-color: $main-color;
+        padding: 7px 14px;
+        border-radius: 10px;
+        @include flex(center, center);
+
+        &:hover {
+          cursor: pointer;
+          background-color: $main-color;
+        }
+
+        .day {
+          color: $txt-color;
+          font-size: 15px;
+          font-weight: 700;
+        }
+
+        .time {
+          color: $txt-color;
+          font-size: 14px;
+        }
+
+        .divide {
+          color: $txt-color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@use "scss" as *;
+
+.overview {
+  padding: 0 80px;
+  padding-top: 50px;
+  @include flex(flex-start, flex-start);
+
+  &__main-img {
+    width: 30%;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  &__main-content {
+    width: 70%;
+    margin-left: 32px;
+    .name {
+      font-size: 20px;
+      color: $txt-color;
+      font-weight: 700;
+    }
+
+    .rate {
+      margin-bottom: 24px;
+    }
+
+    .description {
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .day,
+    .time,
+    .type {
+      margin-bottom: 8px;
+    }
+
+    .day-title,
+    .time-title,
+    .type-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .day-content,
+    .time-content,
+    .type-content {
+      font-size: 15px;
+    }
+
+    .overview__main-btn {
+      @include flex(flex-start, flex-start);
+      margin-top: 32px;
+
+      & > * ~ * {
+        margin-left: 8px;
+      }
+
+      .overview__btn {
+        width: 200px;
+        color: $txt-color;
+        background-color: $main-color;
+        border-color: transparent;
+
+        &:hover {
+          background-color: $white;
+          color: $main-color;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 @use "./scss/index" as *;
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap");
 
 * {
@@ -27,7 +29,7 @@ body {
   line-height: 1.5;
 
   background-color: $body-bg;
-  color: $txt-color;
+  color: $txt-color !important;
 
   @include mobile {
     margin-bottom: 3rem;
@@ -36,7 +38,7 @@ body {
 
 a {
   text-decoration: none;
-  color: unset;
+  color: $txt-color;
 }
 
 @media (hover: hover) {
@@ -52,6 +54,10 @@ input {
 
 button {
   cursor: pointer;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 ul {

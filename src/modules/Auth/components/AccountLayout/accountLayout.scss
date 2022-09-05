@@ -1,0 +1,20 @@
+@use "scss" as *;
+.account {
+  &__wrapper {
+    @include flex(flex-start, space-between);
+  }
+  &__fill {
+    width: 40%;
+  }
+
+  &__background {
+    width: 60%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
