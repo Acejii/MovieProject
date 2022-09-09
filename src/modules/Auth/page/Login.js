@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { FaUserAlt, FaLock, FaSpinner } from "react-icons/fa";
@@ -11,6 +11,10 @@ import { notification } from "antd";
 import "./login.scss";
 
 const Login = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [loginUser, setLoginUser] = useState({
     taiKhoan: "",
     matKhau: "",
@@ -28,14 +32,14 @@ const Login = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setLoginUser({ ...loginUser, [name]: value });
+  };
 
+  const handleEnterToLogin = (e) => {
     // Enter để đăng nhập
-    e.target.addEventListener("keypress", (e) => {
-      if (e.key !== "Enter") {
-        return;
-      }
-      handleLogin(loginUser);
-    });
+    if (e.key !== "Enter") {
+      return;
+    }
+    handleLogin(loginUser);
   };
 
   const handleLogin = async (loginUser) => {
@@ -77,6 +81,7 @@ const Login = () => {
             spellCheck={false}
             value={loginUser.username}
             onChange={handleChangeInput}
+            onKeyDown={handleEnterToLogin}
           />
           <label htmlFor="username" className="user-form-icon">
             <FaUserAlt size={18} />
@@ -94,6 +99,7 @@ const Login = () => {
             spellCheck={false}
             value={loginUser.password}
             onChange={handleChangeInput}
+            onKeyDown={handleEnterToLogin}
           />
           <label htmlFor="password" className="user-form-icon">
             <FaLock size={18} />
@@ -143,7 +149,7 @@ const Login = () => {
       <div className="text-center mt-3">
         <h2 className="font-bold text-white mb-3">OR</h2>
 
-        <button className="w-[90%] m-auto flex justify-center items-center py-3 bg-[#0675e8] rounded-xl hover:bg-blue-800">
+        <button className="w-[80%] m-auto flex justify-center items-center py-3 bg-[#0675e8] rounded-xl hover:bg-blue-800">
           <GrFacebook size={20} className="mr-3" />
           <span className="text-center text-white">
             Đăng nhập bằng Facebook

@@ -1,0 +1,38 @@
+@use "scss" as *;
+
+.ticket__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, gray, #333);
+  border-radius: 20px;
+  &__info {
+    display: flex;
+
+    &-img {
+      width: 60px;
+    }
+
+    &-main {
+      margin-left: 50px;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .item-title {
+        font-size: 15px;
+        color: $txt-color;
+        font-weight: 600;
+      }
+
+      .content {
+        font-size: 14px;
+        margin-left: 15px;
+      }
+    }
+  }
+}

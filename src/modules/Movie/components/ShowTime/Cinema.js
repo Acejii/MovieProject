@@ -1,7 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import alert from "ultils/alert/alert";
 import moment from "moment";
 
 const Cinema = ({ cinemas }) => {
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const handleClickMovieShowTime = (showtimeId) => {
+    if (!user) {
+      alert("Bạn chưa đăng nhập", "Bạn có muốn quay lại để đăng nhập", () =>
+        navigate("/account/login")
+      );
+    } else {
+      navigate(`/ticket/${showtimeId}`);
+    }
+  };
   return (
     <>
       {cinemas.map((cinema) => (
@@ -14,7 +28,8 @@ const Cinema = ({ cinemas }) => {
           </div>
           <div className="cinema__showtime">
             {cinema.lichChieuPhim.map((showtime) => (
-              <div
+              <button
+                onClick={() => handleClickMovieShowTime(showtime.maLichChieu)}
                 key={showtime.maLichChieu}
                 className="cinema__showtime__container"
               >
@@ -29,7 +44,7 @@ const Cinema = ({ cinemas }) => {
                     {showtime.ngayChieuGioChieu.slice(-5)}
                   </span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

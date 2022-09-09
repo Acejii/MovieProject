@@ -1,11 +1,10 @@
-import axios from "axios";
 import axiosClient from "./axiosClient";
 
 const movieAPI = {
   getMovies: () => {
     return axiosClient.get("QuanLyPhim/LayDanhSachPhim", {
       params: {
-        maNhom: "GP14",
+        maNhom: "GP05",
       },
     });
   },
@@ -54,7 +53,7 @@ const movieAPI = {
     return axiosClient.get("QuanLyRap/LayThongTinLichChieuHeThongRap", {
       params: {
         maHeThongRap: cinemaSystem,
-        maNhom: "GP02",
+        maNhom: "GP05",
       },
     });
   },

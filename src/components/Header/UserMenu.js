@@ -23,7 +23,7 @@ const UserMenu = () => {
 
   return (
     <div className="user">
-      <Link to="/" className="user__item">
+      <Link to="/profile" className="user__item">
         Tài khoản
       </Link>
       <button className="user__item" onClick={handleSignOut}>

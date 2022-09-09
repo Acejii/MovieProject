@@ -109,5 +109,9 @@
     color: $txt-color;
     font-size: 15px;
     font-weight: 500;
+
+    &:hover {
+      color: $main-color;
+    }
   }
 }

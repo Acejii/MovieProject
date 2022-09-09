@@ -1,26 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./cinema.scss";
 import moment from "moment/moment";
+import alert from "ultils/alert/alert";
 const MovieList = ({ cinema }) => {
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const handleClickMovieShowTime = (showtimeId) => {
+    if (!user) {
+      alert("Bạn chưa đăng nhập", "Bạn có muốn quay lại để đăng nhập", () =>
+        navigate("/account/login")
+      );
+    } else {
+      navigate(`ticket/${showtimeId}`);
+    }
+  };
   return (
     <div className="movie__item__wrapper">
       {cinema?.danhSachPhim?.map((movie, index) => (
         <div key={index} className="movie__item">
-          <div className="movie__image">
+          <Link to={`/movie/${movie.maPhim}`} className="movie__image">
             <img src={movie.hinhAnh} alt="movieImage" />
-          </div>
+          </Link>
           <div className="movie__showtime">
-            <div className="movie__name">
+            <Link to={`/movie/${movie.maPhim}`} className="movie__name">
               <p className="theater">C22</p>
               <p className="name">{movie.tenPhim}</p>
-            </div>
+            </Link>
             <div className="show__time">
               {movie.lstLichChieuTheoPhim
                 ?.slice(0, 4)
                 .map((showtime, index) => (
                   <div key={index} className="showtime__item">
-                    <Link to={`ticket/${showtime.maLichChieu}`}>
+                    <button
+                      onClick={() =>
+                        handleClickMovieShowTime(showtime.maLichChieu)
+                      }
+                    >
                       <div className="showtime__item__day">
                         <p className="day">
                           {moment(
@@ -32,7 +49,7 @@ const MovieList = ({ cinema }) => {
                           {showtime.ngayChieuGioChieu.slice(-8, -3)}
                         </p>
                       </div>
-                    </Link>
+                    </button>
                   </div>
                 ))}
             </div>

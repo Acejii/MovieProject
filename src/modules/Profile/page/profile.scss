@@ -1,0 +1,25 @@
+@use "scss" as *;
+
+.profile {
+  color: $txt-color;
+  padding: 32px;
+
+  &__wrapper {
+    padding: 32px;
+    border: 1px solid transparent;
+    box-shadow: $box-shadow;
+  }
+
+  // custom tabs ant design
+  .ant-tabs-tab-btn {
+    height: 20px;
+    line-height: 20px;
+    color: $txt-color;
+    font-size: 14px;
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $main-color;
+    font-size: 18px;
+  }
+}

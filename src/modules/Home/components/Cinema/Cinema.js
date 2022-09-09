@@ -14,7 +14,7 @@ const Cinema = () => {
   const { data: cinemaSystems } = useRequest(() => movieAPI.getCinemaSystem());
   return (
     <div className="cinemas__wrapper container">
-      <h1 className="heading">HỆ THỐNG RẠP TRÊN TOÀN QUỐC</h1>
+      <h1 className="cinema__heading">HỆ THỐNG RẠP TRÊN TOÀN QUỐC</h1>
       <div className="cinema__border">
         <Tabs tabPosition="left">
           {cinemaSystems?.map((cinemaSystem, index) => (

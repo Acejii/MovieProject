@@ -1,78 +1,72 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-
-import { GrFacebook } from "react-icons/gr";
+import React from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import profileAPI from "apis/profileAPI";
+import useRequest from "hooks/useRequest";
+import { notification } from "antd";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
 
-import useRequest from "hooks/useRequest";
-import authAPI from "apis/authAPI";
-import { notification } from "antd";
-
-function Register() {
-  const { user } = useSelector((state) => state.auth);
+const ModalContent = ({ setModalOpen, info }) => {
   const [isShowPassword, setShowPassword] = useState(false);
-
-  const navigate = useNavigate();
-
-  notification.config({
-    placement: "top",
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      hoTen: "",
-      taiKhoan: "",
-      matKhau: "",
-      email: "",
-      soDt: "",
-      maNhom: "",
+      hoTen: info?.hoTen,
+      taiKhoan: info?.taiKhoan,
+      matKhau: info?.matKhau,
+      email: info?.email,
+      soDt: info?.soDT,
+      maNhom: info?.maNhom,
+      maLoaiNguoiDung: info?.maLoaiNguoiDung,
     },
     mode: "onTouched",
   });
 
-  const { data: handleRegister, isLoading } = useRequest(
-    (values) => authAPI.register(values),
+  //config notification
+  notification.config({
+    placement: "top",
+  });
+
+  //   Gọi request cập nhật
+  const { data: handleUpdate, isLoading } = useRequest(
+    (values) => profileAPI.updateProfileInfo(values),
     { isManual: true }
   );
 
+  // Submit
   const onSubmit = async (values) => {
     try {
-      await handleRegister(values);
+      await handleUpdate(values);
+      setModalOpen(false);
       notification.success({
-        message: "Đăng ký thành công",
+        message: "Cập nhật thành công",
       });
-      navigate("/account/login");
     } catch (error) {
       notification.error({
-        message: "Đăng ký thất bại",
+        message: "Cập nhật thất bại",
         description: error,
       });
     }
   };
 
-  if (user) {
-    return <Navigate to="/" />;
-  }
+  console.log(errors);
 
   return (
-    <div className="w-[70%] m-auto">
-      <h1 className="text-center text-[20px] font-bold text-white mb-1 mt-3">
-        ĐĂNG KÝ
-      </h1>
-      {/* main */}
+    <div className="profileEdit">
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Họ tên */}
+        <label htmlFor="hoTen" className="font-bold text-[15px]">
+          Họ tên
+        </label>
         <div
           className={`form-control mr-1 ${errors.hoTen ? "errorInput" : ""}`}
         >
           <input
+            id="hoTen"
             type="text"
             className="w-full pl-4 leading-[36px]"
             placeholder="Họ tên"
@@ -87,12 +81,17 @@ function Register() {
         {errors.hoTen && <p className="errorMessage">{errors.hoTen.message}</p>}
 
         {/* Tài khoản */}
+        <label htmlFor="taiKhoan" className="font-bold text-[15px]">
+          Tài khoản
+        </label>
         <div className={`form-control ${errors.taiKhoan ? "errorInput" : ""}`}>
           <input
+            id="taiKhoan"
             type="text"
             className="w-full pl-4 leading-[36px]"
             placeholder="Tên đăng nhập"
             spellCheck={false}
+            disabled
             {...register("taiKhoan", {
               required: "Không được để trống",
               pattern: {
@@ -107,8 +106,12 @@ function Register() {
         )}
 
         {/* password */}
+        <label htmlFor="matKhau" className="font-bold text-[15px]">
+          Mật khẩu
+        </label>
         <div className={`form-control ${errors.matKhau ? "errorInput" : ""}`}>
           <input
+            id="matKhau"
             type={isShowPassword ? "text" : "password"}
             className="w-full pl-4 leading-[36px]"
             placeholder="Mật khẩu"
@@ -138,8 +141,12 @@ function Register() {
         )}
 
         {/* email */}
+        <label htmlFor="email" className="font-bold text-[15px]">
+          Email
+        </label>
         <div className={`form-control ${errors.email ? "errorInput" : ""}`}>
           <input
+            id="email"
             type="text"
             className="w-full pl-4 leading-[36px]"
             placeholder="Email"
@@ -156,8 +163,12 @@ function Register() {
         {errors.email && <p className="errorMessage">{errors.email.message}</p>}
 
         {/* phone */}
+        <label htmlFor="soDT" className="font-bold text-[15px]">
+          Số điện thoại
+        </label>
         <div className={`form-control ${errors.soDt ? "errorInput" : ""}`}>
           <input
+            id="soDT"
             type="text"
             className="w-full pl-4 leading-[36px]"
             placeholder="Số điện thoại"
@@ -173,62 +184,28 @@ function Register() {
         </div>
         {errors.soDt && <p className="errorMessage">{errors.soDt.message}</p>}
 
-        {/*Loại người dùng  */}
-        <div className="form-control">
-          <select
-            name="maLoaiNguoidung"
-            id="maLoaiNguoidung"
-            className="text-black w-full pl-3 h-9 text-[14px]"
-            {...register("maNhom", {
-              required: "Bạn chưa chọn loại người dùng",
-            })}
-          >
-            <option value="">Loại người dùng</option>
-            <option value="KhachHang">Khách hàng</option>
-            <option value="QuanTri">Quản trị</option>
-          </select>
-        </div>
-        {errors.maNhom && (
-          <p className="errorMessage">{errors.maNhom.message}</p>
-        )}
-
-        <div className="text-center">
+        <div className="text-center flex justify-between mt-5">
           <button
             type="submit"
             className={`text-16 text-white font-bold px-[60px] py-3 bg-orange-500 mt-4 rounded-md hover:bg-orange-400 relative ${
               isLoading ? "customDisable" : ""
             }`}
           >
-            ĐĂNG KÝ
+            Cập nhật
             {isLoading && (
               <FaSpinner size={24} className="loading registerSpinner" />
             )}
           </button>
+          <div
+            className="text-16 text-white font-bold px-[60px] py-3 bg-gray-500 mt-4 rounded-md hover:bg-gray-400 hover:cursor-pointer"
+            onClick={() => setModalOpen(false)}
+          >
+            Huỷ
+          </div>
         </div>
       </form>
-      {/* footer */}
-      <div className="text-center mt-3">
-        <h2 className="font-bold text-white mb-1">OR</h2>
-
-        <button className="w-[90%] m-auto flex justify-center items-center py-3 bg-[#0675e8] rounded-xl hover:bg-blue-700">
-          <GrFacebook size={20} className="mr-3" />
-          <span className="text-center text-white">
-            Đăng nhập bằng Facebook
-          </span>
-        </button>
-
-        <div className="text-14 flex justify-center mt-3">
-          <p>Bạn đã có tài khoản?</p>
-          <button
-            className="text-purple-600 font-semibold pl-2 mb-7 hover:text-purple-700"
-            onClick={() => navigate("/account/login")}
-          >
-            Đăng nhập ngay
-          </button>
-        </div>
-      </div>
     </div>
   );
-}
+};
 
-export default Register;
+export default ModalContent;
