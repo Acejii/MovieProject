@@ -1,12 +1,13 @@
+import React, { useEffect } from "react";
 import ticketAPI from "apis/ticketAPI";
 import useRequest from "hooks/useRequest";
-import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import Seat from "../components/Seat";
 import TicketTitle from "../components/TicketTitle";
 
+import Seat from "../components/Seat";
 import "./ticket.scss";
+import Loading from "components/Loading";
 
 const Ticket = () => {
   // load trang sẽ hiển thị trên đầu trang
@@ -23,16 +24,19 @@ const Ticket = () => {
 
   return (
     <div className="ticket">
-      <div className="ticket__wrapper container">
-        {/* title */}
-        <TicketTitle movieInfo={movie?.thongTinPhim} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="ticket__wrapper container">
+          {/* title */}
+          <TicketTitle movieInfo={movie?.thongTinPhim} />
+          {/* main */}
 
-        {/* main */}
-
-        <div className="ticket__seat">
-          <Seat seats={movie?.danhSachGhe} />
+          <div className="ticket__seat">
+            <Seat seats={movie?.danhSachGhe} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

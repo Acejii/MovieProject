@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { notification } from "antd";
 import { logout } from "modules/Auth/slices/authSlice";
 
 const UserMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   notification.config({
     placement: "top",
@@ -26,9 +26,16 @@ const UserMenu = () => {
       <Link to="/profile" className="user__item">
         Tài khoản
       </Link>
-      <button className="user__item" onClick={handleSignOut}>
+      {user.maLoaiNguoiDung === "QuanTri" ? (
+        <Link to="/admin/" className="user__item">
+          Quản trị viên
+        </Link>
+      ) : (
+        ""
+      )}
+      <div className="user__item" onClick={handleSignOut}>
         Đăng xuất
-      </button>
+      </div>
     </div>
   );
 };

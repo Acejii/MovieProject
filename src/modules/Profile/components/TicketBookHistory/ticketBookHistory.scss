@@ -1,6 +1,7 @@
 @use "scss" as *;
 
 .history {
+  min-height: 250px;
   display: flex;
   flex-wrap: wrap;
 

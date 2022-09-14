@@ -29,12 +29,12 @@ axiosClient.interceptors.response.use(
     // Ta có thể thay đổi response trước khi response được trả ra cho nơi gọi request.
     // response.data: format của axios
     // .content: format của cybersoft
-    return response.data.content;
+    return response?.data?.content;
   },
   // thất bại
   (error) => {
     // Ta có thể thay đổi error trước khi error được trả ra cho nơi gọi request.
-    return Promise.reject(error.response?.data.content);
+    return Promise.reject(error?.response?.data?.content);
   }
 );
 

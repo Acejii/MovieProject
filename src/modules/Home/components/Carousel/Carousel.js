@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import VideoModal from "../VideoModal/VideoModal";
 import useRequest from "hooks/useRequest";
 import movieAPI from "apis/movieAPI";
+import Loading from "components/Loading";
 
 const MOVIE_TRAILER = [
   "https://www.youtube.com/embed/uqJ9u7GSaYM",
@@ -15,7 +16,7 @@ const MOVIE_TRAILER = [
 ];
 
 const Carousel = () => {
-  const { data, isLoading, error } = useRequest(() => movieAPI.getBanners());
+  const { data, isLoading } = useRequest(() => movieAPI.getBanners());
 
   const [openTrailer, setOpenTrailer] = useState(false);
   const [trailer, setTrailer] = useState(null);
@@ -31,7 +32,7 @@ const Carousel = () => {
   return (
     <div className="carousel__wrapper">
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <Swiper
           speed={1000}

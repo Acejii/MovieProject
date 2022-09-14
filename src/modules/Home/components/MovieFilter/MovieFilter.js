@@ -89,6 +89,9 @@ const MovieFilter = () => {
 
   return (
     <div className="form-wrapper container">
+      <div className="form__title">
+        <p>Đặt vé online ngay!</p>
+      </div>
       <form className="form-group" onSubmit={handleSubmit}>
         <select
           name="name"

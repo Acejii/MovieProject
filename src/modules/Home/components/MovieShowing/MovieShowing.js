@@ -4,15 +4,14 @@ import MovieItem from "./MovieItem";
 import useRequest from "hooks/useRequest";
 import movieAPI from "apis/movieAPI";
 import { useEffect } from "react";
+import Loading from "components/Loading";
 
 const MovieShowing = () => {
   const [type, setType] = useState("dangChieu");
 
-  const {
-    data: movies,
-    isLoading,
-    error,
-  } = useRequest(() => movieAPI.getMovies(type));
+  const { data: movies, isLoading } = useRequest(() =>
+    movieAPI.getMovies(type)
+  );
 
   const moviesByType = movies?.filter((movie) => movie[type] === true);
 
@@ -26,26 +25,30 @@ const MovieShowing = () => {
 
   return (
     <div className="movieshow__wrapper">
-      <div className="container">
-        <div className="title">
-          <h4
-            className="title-item active"
-            onClick={(e) => handleClickTitle(e, "dangChieu")}
-          >
-            Đang chiếu
-          </h4>
-          <h4
-            className="title-item"
-            onClick={(e) => handleClickTitle(e, "sapChieu")}
-          >
-            Sắp chiếu
-          </h4>
-        </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="container">
+          <div className="title">
+            <h4
+              className="title-item active"
+              onClick={(e) => handleClickTitle(e, "dangChieu")}
+            >
+              Đang chiếu
+            </h4>
+            <h4
+              className="title-item"
+              onClick={(e) => handleClickTitle(e, "sapChieu")}
+            >
+              Sắp chiếu
+            </h4>
+          </div>
 
-        <div className="movie-list">
-          <MovieItem movies={moviesByType} />
+          <div className="movie-list">
+            <MovieItem movies={moviesByType} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

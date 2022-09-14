@@ -1,0 +1,23 @@
+.showtimeManage__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .movie__title {
+    margin-left: 20px;
+    color: blue;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .showtimeManage__btn {
+    font-size: 16px;
+    padding: 8px 20px;
+    background-color: blue;
+    border-radius: 8px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+}

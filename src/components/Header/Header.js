@@ -3,14 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 import { publicRoutes } from "../../routes/routes";
 import { useSelector } from "react-redux";
 import { Avatar, Dropdown } from "antd";
-import "./header.scss";
 import logo from "../../assets/img/logo.png";
+import avatar from "assets/img/avatar.jpg";
 import UserMenu from "./UserMenu";
+import "./header.scss";
+
+const navigateItem = [{ title: "home" }];
 
 const Header = () => {
   const headerRef = useRef(null);
   const { user } = useSelector((state) => state.auth);
-  const userRender = user?.taiKhoan.slice(0, 1);
 
   useEffect(() => {
     const handleShrink = () => {
@@ -36,8 +38,11 @@ const Header = () => {
       <div className="header__wrap container">
         <div className="left">
           <div className="logo">
-            <Link to="/">
-              <img src={logo} alt="" />
+            <Link to="/" className="logo__wrapper">
+              <div className="logo-img">
+                <img src={logo} alt="logo" />
+              </div>
+              <p className="logo-title">CyberCinema</p>
             </Link>
           </div>
           <div className="header__nav">
@@ -53,9 +58,7 @@ const Header = () => {
           {user ? (
             <Dropdown placement="bottomRight" overlay={<UserMenu />}>
               <div className="user__avatar">
-                <Avatar className="avatar" size="medium">
-                  {userRender.toUpperCase()}
-                </Avatar>
+                <Avatar className="avatar" size="medium" src={avatar}></Avatar>
                 <p>{user?.taiKhoan}</p>
               </div>
             </Dropdown>

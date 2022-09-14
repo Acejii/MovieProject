@@ -3,8 +3,20 @@
 .form-wrapper {
   margin-top: 28px;
   margin-bottom: 32px;
-  background-color: $body-bg;
-  padding: 0 2rem;
+  background-color: rgba($color: black, $alpha: 0.5);
+  box-shadow: $box-shadow;
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: $main-color;
+    text-transform: uppercase;
+  }
 }
 
 .container {
@@ -12,7 +24,7 @@
     width: 100%;
     @include flex(center, space-between);
     padding: 10px 20px;
-    background-color: rgba($color: $white, $alpha: 0.9);
+
     border-radius: 10px;
 
     & > * ~ * {

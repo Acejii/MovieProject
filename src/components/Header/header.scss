@@ -35,17 +35,30 @@
   }
 
   .logo {
-    @include flex(center, center);
-    $logo-size: 70px;
-    width: $logo-size;
-    height: $logo-size;
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     a {
       display: inline-flex;
     }
 
-    img {
-      object-fit: cover;
+    .logo-img {
+      $logo-size: 40px;
+      width: $logo-size;
+      height: $logo-size;
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .logo-title {
+      font-weight: 700;
+      color: $main-color;
+      text-transform: uppercase;
+      margin-left: 6px;
     }
   }
 
@@ -81,7 +94,6 @@
 
   .right {
     .avatar {
-      background-color: $main-color;
       margin-right: 5px;
     }
 
@@ -99,7 +111,7 @@
   background: linear-gradient(to top, $body-bg, #333, #333);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
 
   & > * ~ * {
@@ -109,6 +121,7 @@
     color: $txt-color;
     font-size: 15px;
     font-weight: 500;
+    cursor: pointer;
 
     &:hover {
       color: $main-color;

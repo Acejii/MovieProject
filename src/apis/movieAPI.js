@@ -53,7 +53,7 @@ const movieAPI = {
     return axiosClient.get("QuanLyRap/LayThongTinLichChieuHeThongRap", {
       params: {
         maHeThongRap: cinemaSystem,
-        maNhom: "GP05",
+        maNhom: "GP04",
       },
     });
   },

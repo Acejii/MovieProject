@@ -1,14 +1,17 @@
-import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "modules/Auth/slices/authSlice";
 import profileAPI from "apis/profileAPI";
 import useRequest from "hooks/useRequest";
 import { notification } from "antd";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
 
-const ModalContent = ({ setModalOpen, info }) => {
+const ModalContent = ({ setModalOpen, info, onReload }) => {
   const [isShowPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -26,6 +29,9 @@ const ModalContent = ({ setModalOpen, info }) => {
     mode: "onTouched",
   });
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   //config notification
   notification.config({
     placement: "top",
@@ -41,10 +47,14 @@ const ModalContent = ({ setModalOpen, info }) => {
   const onSubmit = async (values) => {
     try {
       await handleUpdate(values);
+      dispatch(logout());
       setModalOpen(false);
+      onReload();
       notification.success({
         message: "Cập nhật thành công",
+        description: "Bạn cần đăng nhập lại để thay đổi",
       });
+      navigate("/account/login");
     } catch (error) {
       notification.error({
         message: "Cập nhật thất bại",
@@ -53,13 +63,11 @@ const ModalContent = ({ setModalOpen, info }) => {
     }
   };
 
-  console.log(errors);
-
   return (
     <div className="profileEdit">
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Họ tên */}
-        <label htmlFor="hoTen" className="font-bold text-[15px]">
+        <label htmlFor="hoTen" className="text-black font-bold text-[15px]">
           Họ tên
         </label>
         <div
@@ -79,9 +87,8 @@ const ModalContent = ({ setModalOpen, info }) => {
           />
         </div>
         {errors.hoTen && <p className="errorMessage">{errors.hoTen.message}</p>}
-
         {/* Tài khoản */}
-        <label htmlFor="taiKhoan" className="font-bold text-[15px]">
+        <label htmlFor="taiKhoan" className="text-black font-bold text-[15px]">
           Tài khoản
         </label>
         <div className={`form-control ${errors.taiKhoan ? "errorInput" : ""}`}>
@@ -104,9 +111,8 @@ const ModalContent = ({ setModalOpen, info }) => {
         {errors.taiKhoan && (
           <p className="errorMessage">{errors.taiKhoan.message}</p>
         )}
-
         {/* password */}
-        <label htmlFor="matKhau" className="font-bold text-[15px]">
+        <label htmlFor="matKhau" className="text-black font-bold text-[15px]">
           Mật khẩu
         </label>
         <div className={`form-control ${errors.matKhau ? "errorInput" : ""}`}>
@@ -139,9 +145,8 @@ const ModalContent = ({ setModalOpen, info }) => {
         {errors.matKhau && (
           <p className="errorMessage">{errors.matKhau.message}</p>
         )}
-
         {/* email */}
-        <label htmlFor="email" className="font-bold text-[15px]">
+        <label htmlFor="email" className="text-black font-bold text-[15px]">
           Email
         </label>
         <div className={`form-control ${errors.email ? "errorInput" : ""}`}>
@@ -161,9 +166,8 @@ const ModalContent = ({ setModalOpen, info }) => {
           />
         </div>
         {errors.email && <p className="errorMessage">{errors.email.message}</p>}
-
         {/* phone */}
-        <label htmlFor="soDT" className="font-bold text-[15px]">
+        <label htmlFor="soDT" className="text-black font-bold text-[15px]">
           Số điện thoại
         </label>
         <div className={`form-control ${errors.soDt ? "errorInput" : ""}`}>
@@ -184,10 +188,27 @@ const ModalContent = ({ setModalOpen, info }) => {
         </div>
         {errors.soDt && <p className="errorMessage">{errors.soDt.message}</p>}
 
+        {/* Type */}
+        <label htmlFor="type" className="text-black font-bold text-[15px]">
+          Người dùng
+        </label>
+
+        <div className="form-control">
+          <select
+            className="w-full pl-3 py-[10px]"
+            id="type"
+            {...register("maLoaiNguoiDung")}
+          >
+            <option value="KhachHang">Khách hàng</option>
+            <option value="QuanTri">Quản trị</option>
+          </select>
+        </div>
+
+        {/* footer */}
         <div className="text-center flex justify-between mt-5">
           <button
             type="submit"
-            className={`text-16 text-white font-bold px-[60px] py-3 bg-orange-500 mt-4 rounded-md hover:bg-orange-400 relative ${
+            className={`text-16 text-white font-bold px-[60px] py-2 bg-orange-500 mt-4 rounded-md hover:bg-orange-400 relative ${
               isLoading ? "customDisable" : ""
             }`}
           >
@@ -197,7 +218,7 @@ const ModalContent = ({ setModalOpen, info }) => {
             )}
           </button>
           <div
-            className="text-16 text-white font-bold px-[60px] py-3 bg-gray-500 mt-4 rounded-md hover:bg-gray-400 hover:cursor-pointer"
+            className="text-16 text-white font-bold px-[60px] py-2 bg-gray-500 mt-4 rounded-md hover:bg-gray-400 hover:cursor-pointer"
             onClick={() => setModalOpen(false)}
           >
             Huỷ

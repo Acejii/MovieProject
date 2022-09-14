@@ -175,18 +175,15 @@ function Register() {
 
         {/*Loại người dùng  */}
         <div className="form-control">
-          <select
-            name="maLoaiNguoidung"
-            id="maLoaiNguoidung"
+          <input
+            name="maNhom"
+            id="maNhom"
+            placeholder="Mã nhóm. VD: GP01, GP02..."
             className="text-black w-full pl-3 h-9 text-[14px]"
             {...register("maNhom", {
-              required: "Bạn chưa chọn loại người dùng",
+              required: "Không được để trống",
             })}
-          >
-            <option value="">Loại người dùng</option>
-            <option value="KhachHang">Khách hàng</option>
-            <option value="QuanTri">Quản trị</option>
-          </select>
+          ></input>
         </div>
         {errors.maNhom && (
           <p className="errorMessage">{errors.maNhom.message}</p>
