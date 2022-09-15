@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { FaUserAstronaut } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { publicRoutes } from "../../routes/routes";
 import { useSelector } from "react-redux";
@@ -7,8 +8,7 @@ import logo from "../../assets/img/logo.png";
 import avatar from "assets/img/avatar.jpg";
 import UserMenu from "./UserMenu";
 import "./header.scss";
-
-const navigateItem = [{ title: "home" }];
+import Menu from "components/Menu";
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -56,7 +56,11 @@ const Header = () => {
 
         <div className="right">
           {user ? (
-            <Dropdown placement="bottomRight" overlay={<UserMenu />}>
+            <Dropdown
+              placement="bottom"
+              overlay={<UserMenu />}
+              trigger={["click", "hover"]}
+            >
               <div className="user__avatar">
                 <Avatar className="avatar" size="medium" src={avatar}></Avatar>
                 <p>{user?.taiKhoan}</p>
@@ -64,10 +68,22 @@ const Header = () => {
             </Dropdown>
           ) : (
             <>
-              <Link to="/account/login">Đăng nhập</Link>
-              <Link to="/account/signup">Đăng ký</Link>
+              <Link to="/account/login" className="login">
+                Đăng nhập
+              </Link>
+              <Link to="/account/signup" className="signup">
+                Đăng ký
+              </Link>
+              <Link to="/account/login" className="icon">
+                <FaUserAstronaut size={28} />
+              </Link>
             </>
           )}
+
+          {/* Button dropdown */}
+          <div className="menu">
+            <Menu />
+          </div>
         </div>
       </div>
     </div>

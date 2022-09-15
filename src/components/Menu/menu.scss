@@ -1,0 +1,48 @@
+@use "scss" as *;
+
+.menu__modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 3000;
+  overflow: hidden;
+  display: none;
+  justify-content: center;
+
+  .menu__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .menu__content__item {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 20px;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+
+    .menu__content__item.active {
+      color: $main-color;
+    }
+  }
+
+  .menu__cancel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+  }
+}
+
+.menu__modal.active {
+  display: flex;
+}

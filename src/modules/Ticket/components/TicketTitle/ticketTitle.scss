@@ -9,6 +9,7 @@
   border-radius: 20px;
   &__info {
     display: flex;
+    justify-content: flex-start;
 
     &-img {
       width: 60px;
@@ -22,8 +23,10 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      margin-bottom: 5px;
 
       .item-title {
+        margin: 0;
         font-size: 15px;
         color: $txt-color;
         font-weight: 600;

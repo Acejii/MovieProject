@@ -120,7 +120,7 @@ const Seat = ({ seats }) => {
               "Bạn có thể xem lịch sử đặt vé trong thông tin cá nhân",
           });
           //chuyển hướng về trang chủ
-          navigate("/");
+          navigate("/profile");
         } catch (error) {
           notification.error({
             message: "Đặt vé thất bại",

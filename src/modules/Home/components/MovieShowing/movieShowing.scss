@@ -45,9 +45,10 @@
 // MovieItem.js
 
 .movie-item {
-  width: 20%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
@@ -58,6 +59,7 @@
   }
 
   .movie-image {
+    width: 100%;
     height: 300px;
     overflow: hidden;
     position: relative;
@@ -100,6 +102,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: left;
 
     .main-name {
@@ -126,4 +130,23 @@
   background-color: $main-color;
   padding: 10px 10px;
   color: $white !important;
+}
+
+.swiper-slide {
+  width: 20%;
+}
+
+.swiper-slide:nth-child(2n) {
+  width: 20%;
+}
+
+.swiper-slide:nth-child(3n) {
+  width: 20%;
+}
+
+.swiper-slide:nth-child(4n) {
+  width: 20%;
+}
+.swiper-slide:nth-child(5n) {
+  width: 20%;
 }

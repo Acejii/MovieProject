@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import useRequest from "hooks/useRequest";
 import movieAPI from "apis/movieAPI";

@@ -32,7 +32,7 @@ function Register() {
       matKhau: "",
       email: "",
       soDt: "",
-      maNhom: "",
+      maNhom: "GP01",
     },
     mode: "onTouched",
   });
@@ -74,7 +74,7 @@ function Register() {
         >
           <input
             type="text"
-            className="w-full pl-4 leading-[36px]"
+            className="w-full pl-4 leading-[36px] auth-input-login"
             placeholder="Họ tên"
             spellCheck={false}
             {...register("hoTen", {
@@ -90,7 +90,7 @@ function Register() {
         <div className={`form-control ${errors.taiKhoan ? "errorInput" : ""}`}>
           <input
             type="text"
-            className="w-full pl-4 leading-[36px]"
+            className="w-full pl-4 leading-[36px] auth-input-login"
             placeholder="Tên đăng nhập"
             spellCheck={false}
             {...register("taiKhoan", {
@@ -110,7 +110,7 @@ function Register() {
         <div className={`form-control ${errors.matKhau ? "errorInput" : ""}`}>
           <input
             type={isShowPassword ? "text" : "password"}
-            className="w-full pl-4 leading-[36px]"
+            className="w-full pl-4 leading-[36px] auth-input-login"
             placeholder="Mật khẩu"
             spellCheck={false}
             {...register("matKhau", {
@@ -141,7 +141,7 @@ function Register() {
         <div className={`form-control ${errors.email ? "errorInput" : ""}`}>
           <input
             type="text"
-            className="w-full pl-4 leading-[36px]"
+            className="w-full pl-4 leading-[36px] auth-input-login"
             placeholder="Email"
             spellCheck={false}
             {...register("email", {
@@ -159,7 +159,7 @@ function Register() {
         <div className={`form-control ${errors.soDt ? "errorInput" : ""}`}>
           <input
             type="text"
-            className="w-full pl-4 leading-[36px]"
+            className="w-full pl-4 leading-[36px] auth-input-login"
             placeholder="Số điện thoại"
             spellCheck={false}
             {...register("soDt", {
@@ -172,22 +172,6 @@ function Register() {
           />
         </div>
         {errors.soDt && <p className="errorMessage">{errors.soDt.message}</p>}
-
-        {/*Loại người dùng  */}
-        <div className="form-control">
-          <input
-            name="maNhom"
-            id="maNhom"
-            placeholder="Mã nhóm. VD: GP01, GP02..."
-            className="text-black w-full pl-3 h-9 text-[14px]"
-            {...register("maNhom", {
-              required: "Không được để trống",
-            })}
-          ></input>
-        </div>
-        {errors.maNhom && (
-          <p className="errorMessage">{errors.maNhom.message}</p>
-        )}
 
         <div className="text-center">
           <button

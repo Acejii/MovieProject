@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movieShowing.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,10 +29,8 @@ function MovieItem({ movies }) {
   return (
     <Swiper
       speed={500}
-      slidesPerView={5}
-      slidesPerGroup={5}
+      slidesPerView={"auto"}
       spaceBetween={20}
-      loop={true}
       navigation={true}
       modules={[Navigation]}
       className="mySwiper"

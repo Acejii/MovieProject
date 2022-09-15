@@ -64,7 +64,7 @@ const Login = () => {
   }
 
   return (
-    <div className="border-1 px-5 py-5">
+    <div className="border-1 px-5 py-5 ">
       {/* main */}
       <div className="w-[70%] m-auto">
         <h1 className="text-center text-[20px] font-bold text-white">
@@ -76,7 +76,7 @@ const Login = () => {
             type="text"
             name="taiKhoan"
             id="taiKhoan"
-            className="w-full pl-10 leading-[36px] text-[16px] font-normal"
+            className="w-full pl-10 leading-[36px] text-[16px] font-normal auth-input"
             placeholder="Tên đăng nhập"
             spellCheck={false}
             value={loginUser.username}
@@ -94,7 +94,7 @@ const Login = () => {
             type={isShowLoginPassword ? "text" : "password"}
             name="matKhau"
             id="matKhau"
-            className="w-full pl-10 leading-[36px] text-[16px] font-normal"
+            className="w-full pl-10 leading-[36px] text-[16px] font-normal auth-input"
             placeholder="Mật khẩu"
             spellCheck={false}
             value={loginUser.password}
@@ -149,7 +149,7 @@ const Login = () => {
       <div className="text-center mt-3">
         <h2 className="font-bold text-white mb-3">OR</h2>
 
-        <button className="w-[80%] m-auto flex justify-center items-center py-3 bg-[#0675e8] rounded-xl hover:bg-blue-800">
+        <button className="w-[70%] m-auto flex justify-center items-center py-3 bg-[#0675e8] rounded-xl hover:bg-blue-800">
           <GrFacebook size={20} className="mr-3" />
           <span className="text-center text-white">
             Đăng nhập bằng Facebook
