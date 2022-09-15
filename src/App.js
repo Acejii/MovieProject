@@ -22,7 +22,6 @@ import CheckoutRoute from "routes/CheckoutRoute";
 import CheckoutAdmin from "routes/CheckoutAdmin";
 
 import "./App.scss";
-import "./responsive/index.scss";
 
 function App() {
   return (
