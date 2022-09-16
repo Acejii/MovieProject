@@ -201,7 +201,7 @@ function Register() {
         <div className="text-14 flex justify-center mt-3">
           <p>Bạn đã có tài khoản?</p>
           <button
-            className="text-purple-600 font-semibold pl-2 mb-7 hover:text-purple-700"
+            className="text-purple-600 font-semibold pl-2 hover:text-purple-700"
             onClick={() => navigate("/account/login")}
           >
             Đăng nhập ngay

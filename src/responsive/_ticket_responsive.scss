@@ -51,6 +51,21 @@
     margin: 0;
     margin-top: 4px;
   }
+  .ticket__title__info-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 80px;
+    }
+  }
+
+  .name-item {
+    width: 100%;
+    text-align: center;
+    color: $main-color !important;
+  }
 }
 
 @media screen and (max-width: 576px) {
