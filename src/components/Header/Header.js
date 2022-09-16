@@ -7,8 +7,8 @@ import { Avatar, Dropdown } from "antd";
 import logo from "../../assets/img/logo.png";
 import avatar from "assets/img/avatar.jpg";
 import UserMenu from "./UserMenu";
-import "./header.scss";
 import Menu from "components/Menu";
+import "./header.scss";
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -59,7 +59,7 @@ const Header = () => {
             <Dropdown
               placement="bottom"
               overlay={<UserMenu />}
-              trigger={["click", "hover"]}
+              trigger={["hover", "click"]}
             >
               <div className="user__avatar">
                 <Avatar className="avatar" size="medium" src={avatar}></Avatar>

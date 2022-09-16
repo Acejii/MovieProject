@@ -12,8 +12,12 @@ const style = {
 const DevelopingPage = () => {
   return (
     <div style={style}>
-      <h1 style={{ color: "#fff" }}>Trang đang trong quá trình phát triển</h1>
-      <h1 style={{ color: "#fff" }}>Vui lòng quay lại sau</h1>
+      <h1 style={{ color: "#fff", textAlign: "center" }}>
+        Trang đang trong quá trình phát triển
+      </h1>
+      <p style={{ color: "#fff", textAlign: "center" }}>
+        Vui lòng quay lại sau
+      </p>
     </div>
   );
 };

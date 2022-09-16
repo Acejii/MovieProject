@@ -11,8 +11,11 @@
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 3000;
   overflow: hidden;
-  display: none;
+  display: flex;
   justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
 
   .menu__content {
     display: flex;
@@ -44,5 +47,7 @@
 }
 
 .menu__modal.active {
-  display: flex;
+  // display: flex;
+  visibility: visible;
+  opacity: 1;
 }

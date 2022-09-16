@@ -208,7 +208,7 @@ const ModalContent = ({ setModalOpen, info, onReload }) => {
         <div className="text-center flex justify-between mt-5">
           <button
             type="submit"
-            className={`text-16 text-white font-bold px-[60px] py-2 bg-orange-500 mt-4 rounded-md hover:bg-orange-400 relative ${
+            className={`flex justify-center items-center text-16 text-white font-bold px-[60px] py-4 bg-orange-500 mt-4 rounded-md hover:bg-orange-400 relative ${
               isLoading ? "customDisable" : ""
             }`}
           >
@@ -218,7 +218,7 @@ const ModalContent = ({ setModalOpen, info, onReload }) => {
             )}
           </button>
           <div
-            className="text-16 text-white font-bold px-[60px] py-2 bg-gray-500 mt-4 rounded-md hover:bg-gray-400 hover:cursor-pointer"
+            className="flex justify-center items-center text-16 text-white font-bold px-[60px] py-2 bg-gray-500 mt-4 rounded-md hover:bg-gray-400 hover:cursor-pointer"
             onClick={() => setModalOpen(false)}
           >
             Huỷ

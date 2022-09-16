@@ -28,17 +28,17 @@ const TicketBookHistory = () => {
                   <div className="history__item__info">
                     {/* name */}
                     <div className="history__item__info-item">
-                      <h3 className="name">{ticket.tenPhim}</h3>
+                      <p className="name">{ticket.tenPhim}</p>
                     </div>
                     {/* Thời lượng phim */}
                     <div className="history__item__info-item">
-                      <h3 className="field">Thời lượng</h3>
+                      <p className="field">Thời lượng</p>
                       <p className="content">{`${ticket.thoiLuongPhim} phút`}</p>
                     </div>
 
                     {/* Rạp */}
                     <div className="history__item__info-item">
-                      <h3 className="field">Rạp</h3>
+                      <p className="field">Rạp</p>
                       <p className="content">
                         {
                           ticket.danhSachGhe.map(
@@ -50,7 +50,7 @@ const TicketBookHistory = () => {
 
                     {/*Ngày đặt  */}
                     <div className="history__item__info-item">
-                      <h3 className="field">Ngày đặt</h3>
+                      <p className="field">Ngày đặt</p>
                       <p className="content">{`${moment(
                         ticket.ngayDat.slice(0, 10)
                       ).format("DD/MM/YYYY")} - ${ticket.ngayDat.slice(
@@ -61,7 +61,7 @@ const TicketBookHistory = () => {
 
                     {/* Vị trí ghế */}
                     <div className="history__item__info-item">
-                      <h3 className="field">Ghế số</h3>
+                      <p className="field">Ghế số</p>
                       <p className="content">
                         {ticket.danhSachGhe
                           .map((seat) => seat.tenGhe)

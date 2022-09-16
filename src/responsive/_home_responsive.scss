@@ -177,6 +177,10 @@
     display: none;
   }
 
+  .carousel__wrapper {
+    height: 250px;
+  }
+
   .movie-item .movie-image {
     height: 370px;
   }
@@ -216,7 +220,7 @@
   }
 
   .movie__item__wrapper .movie__item .movie__showtime .movie__name .name {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .movie__item__wrapper
@@ -225,7 +229,7 @@
     .show__time
     .showtime__item__day
     .day {
-    font-size: 15px;
+    font-size: 13px;
   }
   .movie__item__wrapper
     .movie__item
@@ -233,6 +237,69 @@
     .show__time
     .showtime__item__day
     .time {
-    font-size: 15px;
+    font-size: 13px;
+  }
+
+  .movie__item__wrapper .movie__item .movie__image {
+    width: 40%;
+  }
+
+  .movie__item__wrapper .movie__item .movie__showtime .movie__name {
+    display: block;
+  }
+
+  .movie__item__wrapper .movie__item .movie__showtime .movie__name .theater {
+    width: 40px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .cinemas__wrapper .cinemaSystem__tab {
+    width: 40px;
+    height: 40px;
+  }
+  .cinemas__wrapper .ant-tabs-tab {
+    margin: 0 !important;
+    padding: 10px 5px !important;
+    border-right: 1px solid rgba($color: #fff, $alpha: 0.3);
+  }
+
+  .cinemas__wrapper .ant-tabs-tab-btn {
+    margin-right: 0 !important;
+  }
+
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    align-items: center;
+  }
+
+  .cinema__tab {
+    font-size: 13px;
+  }
+
+  .cinema__tab .name {
+    font-size: 14px;
+  }
+
+  .cinema__tab {
+    width: 200px;
+  }
+
+  .ant-tabs-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ant-tabs-left
+    > .ant-tabs-content-holder
+    > .ant-tabs-content
+    > .ant-tabs-tabpane,
+  .ant-tabs-left
+    > div
+    > .ant-tabs-content-holder
+    > .ant-tabs-content
+    > .ant-tabs-tabpane {
+    padding-left: 5px;
   }
 }
