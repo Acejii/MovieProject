@@ -58,4 +58,13 @@
   .seat__list-range {
     margin: 0;
   }
+
+  .seat__list-range-item {
+    padding: 0;
+    padding: 6px 6px 6px 0px;
+  }
+  .seat__list-row-item .row {
+    width: 20px;
+    height: 20px;
+  }
 }
