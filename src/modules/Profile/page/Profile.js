@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tabs } from "antd";
 import "./profile.scss";
 import ProfileInfo from "../components/ProfileInfo";
 import TicketBookHistory from "../components/TicketBookHistory";
 
 const Profile = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="profile">
       <Tabs defaultActiveKey="1" className="profile__wrapper container">
