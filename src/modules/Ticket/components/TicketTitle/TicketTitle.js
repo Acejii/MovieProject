@@ -10,7 +10,7 @@ const TicketTitle = ({ movieInfo }) => {
         </div>
         <div className="ticket__title__info-main">
           <div className="ticket__title__info-item">
-            <h4 className="item-title">{movieInfo?.tenPhim}</h4>
+            <h4 className="item-title name-item">{movieInfo?.tenPhim}</h4>
           </div>
           <div className="ticket__title__info-item">
             <h4 className="item-title">Thông tin rạp: </h4>

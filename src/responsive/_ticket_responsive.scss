@@ -1,3 +1,5 @@
+@use "scss" as *;
+
 @media screen and (max-width: 1200px) {
   .ticket__wrapper {
     padding: 10px 50px 50px 50px;
@@ -66,5 +68,25 @@
   .seat__list-row-item .row {
     width: 20px;
     height: 20px;
+  }
+
+  .ticket__title__info-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 80px;
+    }
+  }
+
+  .name-item {
+    width: 100%;
+    text-align: center;
+    color: $main-color !important;
+  }
+
+  .ticket__title {
+    padding: 20px 0;
   }
 }
